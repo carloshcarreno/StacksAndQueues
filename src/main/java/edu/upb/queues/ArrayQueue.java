@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package edu.upb.queues;
+
 import edu.upb.models.IQueue;
+import edu.upb.models.MyException;
 
 /**
  *
  * @author cahuc
  */
 public class ArrayQueue implements IQueue {
+
     private Object[] array;
     private int size = 0;
     private int head = 0; // index of the current front item, if one exists
@@ -22,27 +25,50 @@ public class ArrayQueue implements IQueue {
 
     @Override
     public void enqueue(Object item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (size == array.length) {
+            throw new MyException("Cannot add to full queue");
+        }
+
+        array[tail] = item;
+        tail++;
+        size++;
     }
 
     @Override
     public Object dequeue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (size == 0) {
+            throw new MyException("Cannot remove from empty queue");
+        }
+
+        Object item = array[head];
+
+        for (int i = 0; i < tail - 1; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[tail - 1] = null;
+        tail--;
+        size--;
+
+        return item;
     }
 
     @Override
     public Object peek() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (size == 0) {
+            throw new MyException("Cannot peek into empty queue");
+        }
+        return array[size - 1];
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return size == 0;
     }
 
 }

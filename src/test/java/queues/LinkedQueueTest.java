@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stacks;
+package queues;
 
-import edu.upb.stacks.LinkedStack;
+import edu.upb.queues.LinkedQueue;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * Unit test for LinkedStack.
+ * Unit test for LinkedQueue.
  */
-public class LinkedStackTest extends BaseStackTest {
+public class LinkedQueueTest extends BaseQueueTest {
 
     @Before
-    public void makeLinkedStack() {
-        s = new LinkedStack();
+    public void makeLinkedQueue() {
+        q = new LinkedQueue();
     }
 
+    @Test
+    public void testNothing() {
+    }
 }

@@ -16,6 +16,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Lavaplatos washer = new Lavaplatos(10);
+        washer.addPlate("Plate");
+        washer.addPlate("Cup");
+        washer.addPlate("Glass");
+        washer.addPlate("Jar");
+        
     }
     
 }

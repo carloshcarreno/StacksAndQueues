@@ -24,13 +24,13 @@ public abstract class BaseStackTest {
     protected IStack s;
 
     @Test
-    public void testNewStackIsEmpty() {
+    public void givenEmptyStack_WhenIsEmpty_ThenIsEmpty() {
         assertTrue(s.isEmpty());
         assertEquals(s.size(), 0);
     }
 
     @Test
-    public void testPushesToEmptyStack() {
+    public void givenEmptyStack_WhenPushElements_ThenIsNotEmptyAndSizeIsCorrect() {
         int numberOfPushes = 6;
         for (int i = 0; i < numberOfPushes; i++) {
             s.push("zzz");
@@ -40,14 +40,14 @@ public abstract class BaseStackTest {
     }
 
     @Test
-    public void testPushThenPop() {
+    public void givenEmptyStack_WhenPushElement_ThenReturnPoppedElement() {
         String message = "hello";
         s.push(message);
         assertEquals(s.pop(), message);
     }
 
     @Test
-    public void testPushThenPeek() {
+    public void givenEmptyStack_WhenPushElements_ThenReturnPeekedElement() {
         String message = "hello";
         s.push(message);
         int size = s.size();
@@ -56,7 +56,7 @@ public abstract class BaseStackTest {
     }
 
     @Test
-    public void testPoppingDownToEmpty() {
+    public void givenNotEmptyStack_WhenPopAllElements_ThenStackIsEmpty() {
         int numberOfPushes = (int) (Math.random() * 20 + 1);
         for (int i = 0; i < numberOfPushes; i++) {
             s.push("zzz");
@@ -69,13 +69,13 @@ public abstract class BaseStackTest {
     }
 
     @Test(expected = MyException.class)
-    public void testPopOnEmptyStack() {
+    public void givenAnEmptyStack_WhenPopElement_ThenThrowsException() {
         assertTrue(s.isEmpty());
         s.pop();
     }
 
     @Test(expected = MyException.class)
-    public void testPeekIntoEmptyStack() {
+    public void givenAnEmptyStack_WhenPeekElement_ThenThrowsException() {
         assertTrue(s.isEmpty());
         s.peek();
     }

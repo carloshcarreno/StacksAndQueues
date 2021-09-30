@@ -15,7 +15,7 @@ import org.junit.Test;
  * Unit test for BoundedStack.
  */
 public class ArrayStackTest extends BaseStackTest {
-    private static final int CAPACITY = 40;
+    private static final int CAPACITY = 21;
 
     @Before
     public void makeBoundedStack() {
@@ -23,7 +23,7 @@ public class ArrayStackTest extends BaseStackTest {
     }
 
     @Test(expected = MyException.class)
-    public void testPushToFullStack() {
+    public void givenFullStack_WhenPushElement_ThenThrowsException() {
         for (int i = 0; i < CAPACITY; i++) {
             s.push("Element "+i);
         }

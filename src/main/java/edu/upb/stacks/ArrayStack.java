@@ -7,6 +7,9 @@ package edu.upb.stacks;
 
 import edu.upb.models.MyException;
 import edu.upb.models.IStack;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  *
@@ -16,32 +19,32 @@ import edu.upb.models.IStack;
  * An implementation of a stack using a static size array whose
  * capacity is set in its constructor.
  */
-public class ArrayStack implements IStack {
+public class ArrayStack<T> implements IStack<T> {
 
-    private Object[] array;
+    private T[] array;
     private int size = 0;
 
     public ArrayStack(int capacity) {
-        array = new Object[capacity];
+        array = (T[]) new Object[capacity];
     }
 
-    public void push(Object item) {
+    public void push(T item) {
         if (size == array.length) {
             throw new MyException("Cannot add to full stack");
         }
         array[size++] = item;
     }
 
-    public Object pop() throws MyException {
+    public T pop() throws MyException {
         if (size == 0) {
             throw new MyException("Cannot pop from empty stack");
         }
-        Object result = array[size - 1];
+        T result = array[size - 1];
         array[--size] = null;
         return result;
     }
 
-    public Object peek() throws MyException {
+    public T peek() throws MyException {
         if (size == 0) {
             throw new MyException("Cannot peek into empty stack");
         }
@@ -55,4 +58,6 @@ public class ArrayStack implements IStack {
     public int size() {
         return size;
     }
+
+
 }

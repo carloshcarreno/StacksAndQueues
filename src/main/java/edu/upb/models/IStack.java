@@ -5,26 +5,26 @@
  */
 package edu.upb.models;
 
-public interface IStack {
+public interface IStack<T> {
 
     /**
      * Adds the given item to the top of the stack.
      */
-    void push(Object item);
+    void push(T item);
 
     /**
      * Removes the top item from the stack and returns it.
      * 
      * @exception java.util.NoSuchElementException if the stack is empty.
      */
-    Object pop();
+    T pop();
 
     /**
      * Returns the top item from the stack without popping it.
      * 
      * @exception java.util.NoSuchElementException if the stack is empty.
      */
-    Object peek();
+    T peek();
 
     /**
      * Returns the number of items currently in the stack.
