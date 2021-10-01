@@ -35,6 +35,7 @@ public class BinaryTree implements ITree {
             System.out.println("¡El valor ya existe!");
             return current;
         }
+
         return current;
     }
 
@@ -100,17 +101,43 @@ public class BinaryTree implements ITree {
         if (value < current.getValue()) {
             current.setLeft(deleteRecursive(value, current.getLeft()));
             return current;
+        } else {
+            current.setRight(deleteRecursive(value, current.getRight()));
+            return current;
         }
-
-        current.setRight( deleteRecursive( value, current.getRight()));
-        return current;
-
     }
 
-    private int findSmallestValue(TreeNode root) {
-        return root.getLeft() == null 
-                ? root.getValue() 
-                : findSmallestValue(root.getLeft());
+    private int findSmallestValue(TreeNode current) {
+        return current.getLeft() == null
+                ? current.getValue()
+                : findSmallestValue(current.getLeft());
+    }
+
+    public void traverseInOrder(TreeNode current) {
+
+        if (current != null) {
+            traverseInOrder(current.getLeft());
+            System.out.println("" + current.getValue());
+            traverseInOrder(current.getRight());
+        }
+    }
+
+    public void traversePreOrder(TreeNode current) {
+
+        if (current != null) {
+            System.out.println("" + current.getValue());
+            traversePreOrder(current.getLeft());
+            traversePreOrder(current.getRight());
+        }
+    }
+
+    public void traversePostOrder(TreeNode current) {
+
+        if (current != null) {
+            traversePostOrder(current.getLeft());
+            traversePostOrder(current.getRight());
+            System.out.println(""+current.getValue());
+        }
     }
 
     @Override
